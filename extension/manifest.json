@@ -7,7 +7,10 @@
 
   "permissions": [],
   "background": {
-    "page": "background.html",
+    "scripts": [
+      "jquery-2.1.0.min.js",
+      "camgaze.js/camgaze.eyetracker.js"
+    ],
     "persistent": false
   }
 }
