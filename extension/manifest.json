@@ -20,10 +20,5 @@
     }
   ],
 
-  "background": {
-    "scripts": [
-    ],
-    "persistent": false
-  }
 }
 
