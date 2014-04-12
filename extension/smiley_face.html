@@ -48,7 +48,7 @@
     <div class="container-narrow">
       <div class="hero-unit">
         <div align="center">
-          <canvas id="mainCanvas"></canvas>
+          <canvas id="eye-mouse-video"></canvas>
           <video style="display: none;" autoplay></video>
         </div>
       </div>
@@ -72,7 +72,7 @@
 				var cGaze = new camgaze.Camgaze(
 					width, 
 					height, 
-					"mainCanvas"
+					"eye-mouse-video"
 				);
 				var eyeTracker = new camgaze.EyeTracker(width, height);
 				var eyeFilter = new camgaze.EyeFilter();
@@ -134,7 +134,7 @@
                     //                     })
                     //                     .detect(1, 1.25, 0.1, 1, true); // go
           
-					if (trackingData.eyeList.length == 2) {
+					if (trackingData.eyeList.length == 2 && gazeList[0] != undefined && gazeList[1] != undefined) {
             //image_data = drawer.drawCircle(drawPt, 10, -1, "green");
             gazeList = eyeFilter.getFilteredGaze(trackingData);
             var lft_eye = gazeList[0].centroid.unfiltered;
