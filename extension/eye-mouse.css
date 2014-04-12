@@ -14,10 +14,3 @@
   opacity: 0.5
 }
 
-div#badge {
-    width: 141px;
-    height: 141px;
-    position: fixed;
-    top: 0;
-    right: 0;
-}
