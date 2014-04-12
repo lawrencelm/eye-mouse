@@ -2,11 +2,12 @@ var height = 480;
 var width = 640;
 var drawPt;
 var cGaze = new camgaze.Camgaze(
-  width,
-  height,
-  "eye-mouse-canvas"
-);
+    width,
+    height,
+    "eye-mouse-canvas"
+    );
 
+  var eye_movement_max = 20;
 var eyeTracker = new camgaze.EyeTracker(width, height);
 var eyeFilter = new camgaze.EyeFilter();
 var drawer = new camgaze.drawing.ImageDrawer();
@@ -14,6 +15,9 @@ var drawer = new camgaze.drawing.ImageDrawer();
 var runningAvg = new Array();
 var lftAvg = new Array();
 var rtAvg = new Array();
+var lwink_counter = 0;
+var rwink_counter = 0;
+var wink_threshold = 10;
 for (var i = 0; i < 5; i++) runningAvg.push(new camgaze.structures.Point(-1,-1));
 for (var i = 0; i < 5; i++) lftAvg.push(new camgaze.structures.Point(-1,-1));
 for (var i = 0; i < 5; i++) rtAvg.push(new camgaze.structures.Point(-1,-1));
@@ -25,6 +29,12 @@ function average(pts) {
     ysum += pts[i].getY();
   }
   return new camgaze.structures.Point(xsum/pts.length, ysum/pts.length);
+}
+function reasonable_eye_pos(left, right) {
+  if (!calibrating)
+    return (Math.abs(left.getY() - right.getY()) < eye_movement_max);
+  else
+    return true;
 }
 var calibrating = true;
 
@@ -58,44 +68,50 @@ var frameOp = function (image_data, video) {
   var lookingPt;
   var trackingData = eyeTracker.track(image_data, video);
   var gazeList = eyeFilter.getFilteredGaze(trackingData);
-            // new HAAR.Detector(haarcascade_frontalface_alt, Parallel)
-            //                     .image(image_data) // use the image
-            //                     .interval(30) // set detection interval for asynchronous detection (if not parallel)
-            //                     .complete(function(){  // onComplete callback
-            //                         console.log(this.Selection, this.objects);
-            //                         alert(l+" Objects found");
-            //                     })
-            //                     .detect(1, 1.25, 0.1, 1, true); // go
-  
-  if (trackingData.eyeList.length == 2) {
+
+  if (trackingData.eyeList.length == 2 && gazeList[0] != undefined && gazeList[1] != undefined) {
+    lwink_counter = 0;
+    rwink_counter = 0;
     //image_data = drawer.drawCircle(drawPt, 10, -1, "green");
     gazeList = eyeFilter.getFilteredGaze(trackingData);
     var lft_eye = gazeList[0].centroid.unfiltered;
     var rt_eye = gazeList[1].centroid.unfiltered;
-    if (lft_eye.getX() > rt_eye.getX()) {
-      var tmp = lft_eye;
-      lft_eye = rt_eye;
-      rt_eye = tmp;
+    if (reasonable_eye_pos(lft_eye, rt_eye)) {
+      if (lft_eye.getX() > rt_eye.getX()) {
+        var tmp = lft_eye;
+        lft_eye = rt_eye;
+        rt_eye = tmp;
+      }
+      var ctr_eye = lft_eye.add(rt_eye);
+      runningAvg.push(new camgaze.structures.Point(ctr_eye.getX()/2, ctr_eye.getY()/2));
+      runningAvg.shift();
+
+      lftAvg.push(lft_eye);
+      lftAvg.shift();
+
+      rtAvg.push(rt_eye);
+      rtAvg.shift();
+
+      var eyeCenter = average(runningAvg);
+      //image_data = drawer.drawCircle(image_data, eyeCenter, 5, -1, "green");
+      //image_data = drawer.drawCircle(image_data, average(lftAvg), 5, -1, "red");
+      //image_data = drawer.drawCircle(image_data, average(rtAvg), 5, -1, "red");
+      if (isCalibrated())
+        move_from_centroid(eyeCenter);
     }
-    var ctr_eye = lft_eye.add(rt_eye);
-    runningAvg.push(new camgaze.structures.Point(ctr_eye.getX()/2, ctr_eye.getY()/2));
-    runningAvg.shift();
-
-    lftAvg.push(lft_eye);
-    lftAvg.shift();
-
-    rtAvg.push(rt_eye);
-    rtAvg.shift();
-
-    var eyeCenter = average(runningAvg);
-    image_data = drawer.drawCircle(image_data, eyeCenter, 5, -1, "green");
-    image_data = drawer.drawCircle(image_data, average(lftAvg), 5, -1, "red");
-    image_data = drawer.drawCircle(image_data, average(rtAvg), 5, -1, "red");
-    if (isCalibrated())
-      move_from_centroid(eyeCenter);
-  } else if (trackingData.eyeList.length == 1) {
+  } else if (trackingData.eyeList.length == 1 && gazeList[0] != undefined) {
     //console.log("WINK!");
+    var winkEye = gazeList[0].centroid.unfiltered;
+    var lft_eye = average(lftAvg);
+    var rt_eye = average(rtAvg);
+    if (winkEye.distTo(lft_eye) < winkEye.distTo(rt_eye)) {
+      lwink_counter++; rwink_counter = 0;
+      if (lwink_counter == wink_threshold) wink("left");
+    } else {
+      rwink_counter++; lwink_counter = 0;
+      if (rwink_counter == wink_threshold) wink("right");
+    }
   }
-  return image_data;
+
 };
 cGaze.setFrameOperator(frameOp);
