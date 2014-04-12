@@ -1,3 +1,11 @@
+
+// append required DOM elements
+$('body').after('
+  <div id="eye-mouse-cursor"></div>
+  <canvas id="eye-mouse-canvas"></canvas>
+  <video id="eye-mouse-video" style="display: none;" autoplay></video>
+');
+
 var prevx = $(window).width()/2;
 var prevy = $(window).height()/2;
 var x = prevx;
@@ -5,7 +13,7 @@ var y = prevy;
 var simx = x;
 var simy = y;
 var amp = 10;
-function update_cursor(x, y) {
+var update_cursor = function (x, y) {
   document.getElementById("eye-mouse-cursor").style.top=(y+2).toString() + "px";
   document.getElementById("eye-mouse-cursor").style.left=(x+2).toString() + "px";
 }
@@ -18,7 +26,7 @@ var gaze_center =  new camgaze.structures.Point(xmax/2, ymax/2);
 function set_gaze_center (new_center) {
   x = new_center.getX() + 100;
   y = new_center.getY() + 100;
-  prevx = x; 
+  prevx = x;
   prevy = y;
   simx = x;
   simy = y;
