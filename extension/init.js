@@ -1,4 +1,3 @@
-
 var numberOfTestPoints = 10;
 var distList = new Array();
 var xDistList = new Array();
