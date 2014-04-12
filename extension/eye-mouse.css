@@ -11,6 +11,7 @@
   position: fixed;
   right: -480px;
   bottom: -360px;
-  opacity: 0.5
+  opacity: 0.5;
+  cursor: pointer;
 }
 

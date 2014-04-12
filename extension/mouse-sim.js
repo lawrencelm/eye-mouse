@@ -6,16 +6,21 @@ $('body').after('\
 ');
 
 $eyeMouseCanvas = $('#eye-mouse-canvas')
-console.log($eyeMouseCanvas)
 
 $eyeMouseCanvas.mouseenter(function () {
-  console.log('mouseenter')
+  $eyeMouseCanvas.animate({
+    opacity: 1
+  });
+});
+
+$eyeMouseCanvas.click(function () {
   $eyeMouseCanvas.animate({
     right: '0px',
     bottom: '0px',
     opacity: 1
   });
 });
+
 $eyeMouseCanvas.mouseleave(function () {
   $eyeMouseCanvas.animate({
     right: '-480px',
