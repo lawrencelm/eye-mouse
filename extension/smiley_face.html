@@ -68,7 +68,7 @@
 			window.onload = function () {
 				var height = 480;
 				var width = 640;
-
+        var drawPt;
 				var cGaze = new camgaze.Camgaze(
 					width, 
 					height, 
@@ -77,12 +77,22 @@
 				var eyeTracker = new camgaze.EyeTracker(width, height);
 				var eyeFilter = new camgaze.EyeFilter();
 				var drawer = new camgaze.drawing.ImageDrawer();
+        //var mappedMovingAverage = new camgaze.structures.MovingAveragePoints( new camgaze.structures.Point(0,0), 10);
+        var runningAvg = new Array();
+        for (var i = 0; i < 5; i++) runningAvg.push(new camgaze.structures.Point(0,0));
 
+        function smoothPt() {
+          xsum = 0; ysum = 0;
+          for (var i = 0; i < runningAvg.length; i++) {
+            xsum += runningAvg[i].getX();
+            ysum += runningAvg[i].getY();
+          }
+          return new camgaze.structures.Point(xsum/2/runningAvg.length, ysum/2/runningAvg.length);
+        }
 				var frameOp = function (image_data, video) {
+          var lookingPt;
 					var trackingData = eyeTracker.track(image_data, video);
-
 					var gazeList = eyeFilter.getFilteredGaze(trackingData);
-
                     // new HAAR.Detector(haarcascade_frontalface_alt, Parallel)
                     //                     .image(image_data) // use the image
                     //                     .interval(30) // set detection interval for asynchronous detection (if not parallel)
@@ -91,8 +101,15 @@
                     //                         alert(l+" Objects found");
                     //                     })
                     //                     .detect(1, 1.25, 0.1, 1, true); // go
-
-					if (trackingData.eyeList.length > 0) {
+          
+					if (trackingData.eyeList.length == 2) {
+            //image_data = drawer.drawCircle(drawPt, 10, -1, "green");
+            gazeList = eyeFilter.getFilteredGaze(trackingData);
+            var eye_avg =  gazeList[0].centroid.unfiltered.add(gazeList[1].centroid.unfiltered);
+            runningAvg.push(eye_avg);
+            runningAvg.shift();
+            var eyeCenter = smoothPt();
+            image_data = drawer.drawCircle(image_data, eyeCenter, 5, -1, "green");
 						gazeList.forEach(
 							function (eye) {
                 //alert(eye.gazeVector.getX());
