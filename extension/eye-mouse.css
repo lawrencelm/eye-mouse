@@ -6,6 +6,14 @@
   left:500px;
   z-index:1000;
 }
+
+#eye-mouse-canvas {
+  position: fixed;
+  right: -480px;
+  bottom: -360px;
+  opacity: 0.5
+}
+
 div#badge {
     width: 141px;
     height: 141px;

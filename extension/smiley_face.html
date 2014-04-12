@@ -48,7 +48,7 @@
     <div class="container-narrow">
       <div class="hero-unit">
         <div align="center">
-          <canvas id="eye-mouse-video"></canvas>
+          <canvas id="eye-mouse-canvas"></canvas>
           <video style="display: none;" autoplay></video>
         </div>
       </div>
@@ -72,7 +72,7 @@
 				var cGaze = new camgaze.Camgaze(
 					width, 
 					height, 
-					"eye-mouse-video"
+					"eye-mouse-canvas"
 				);
 				var eyeTracker = new camgaze.EyeTracker(width, height);
 				var eyeFilter = new camgaze.EyeFilter();
