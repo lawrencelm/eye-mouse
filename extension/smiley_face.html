@@ -31,6 +31,10 @@
                 top: 0;
                 right: 0;
             }
+            canvas, video{
+              display:none;
+              visibility:hidden;
+            }
     	</style>
     	<!-- Le Bootstrap styles -->
         <link href="bootstrap-combined.min.css" rel="stylesheet">
@@ -68,7 +72,7 @@
 			window.onload = function () {
 				var height = 480;
 				var width = 640;
-        var drawPt;
+        //var drawPt;
 				var cGaze = new camgaze.Camgaze(
 					width, 
 					height, 
@@ -77,7 +81,7 @@
         var eye_movement_max = 20;
 				var eyeTracker = new camgaze.EyeTracker(width, height);
 				var eyeFilter = new camgaze.EyeFilter();
-				var drawer = new camgaze.drawing.ImageDrawer();
+				//var drawer = new camgaze.drawing.ImageDrawer();
         //var mappedMovingAverage = new camgaze.structures.MovingAveragePoints( new camgaze.structures.Point(0,0), 10);
         var runningAvg = new Array();
         var lftAvg = new Array();
@@ -168,9 +172,9 @@
               rtAvg.shift();
 
               var eyeCenter = average(runningAvg);
-              image_data = drawer.drawCircle(image_data, eyeCenter, 5, -1, "green");
-              image_data = drawer.drawCircle(image_data, average(lftAvg), 5, -1, "red");
-              image_data = drawer.drawCircle(image_data, average(rtAvg), 5, -1, "red");
+              //image_data = drawer.drawCircle(image_data, eyeCenter, 5, -1, "green");
+              //image_data = drawer.drawCircle(image_data, average(lftAvg), 5, -1, "red");
+              //image_data = drawer.drawCircle(image_data, average(rtAvg), 5, -1, "red");
               if (isCalibrated())
                 move_from_centroid(eyeCenter);
             }

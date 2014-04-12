@@ -11,7 +11,7 @@ var x = prevx;
 var y = prevy;
 var simx = x;
 var simy = y;
-var amp = 20;
+var amp = 50;
 
 var running_xavg = new Array();
 var running_yavg = new Array();
