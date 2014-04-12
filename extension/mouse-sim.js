@@ -1,9 +1,8 @@
-
 // append required DOM elements
-$('body').after('
-  <div id="eye-mouse-cursor"></div>
-  <canvas id="eye-mouse-canvas"></canvas>
-  <video id="eye-mouse-video" style="display: none;" autoplay></video>
+$('body').after('\
+  <div id="eye-mouse-cursor"></div>\
+  <canvas id="eye-mouse-canvas"></canvas>\
+  <video id="eye-mouse-video" style="display: none;" autoplay></video>\
 ');
 
 var prevx = $(window).width()/2;
