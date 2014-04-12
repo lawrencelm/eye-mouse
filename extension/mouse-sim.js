@@ -30,12 +30,13 @@ var x = prevx;
 var y = prevy;
 var simx = x;
 var simy = y;
-var amp = 20;
+var amp = 50;
 
 var running_xavg = new Array();
 var running_yavg = new Array();
 
-var update_cursor = function (x, y) {
+function update_cursor(x, y) {
+  document.getElementById("eye-mouse-cursor").style.backgroundColor = "#0f0";
   document.getElementById("eye-mouse-cursor").style.top=(y+2).toString() + "px";
   document.getElementById("eye-mouse-cursor").style.left=(x+2).toString() + "px";
 }
@@ -79,6 +80,15 @@ function move_from_centroid(c) {
   var xavg = running_xavg.reduce(function(a,b) { return a+b }) / running_xavg.length;
   var yavg = running_yavg.reduce(function(a,b) { return a+b }) / running_yavg.length;
   update_cursor(xavg, yavg);
+}
+
+function wink(side) {
+  document.getElementById("eye-mouse-cursor").style.backgroundColor = "#00f";
+  if (side == "left") {
+    //console.log ("WINK LEFT!");
+  } else {
+    //console.log("WINK RIGHT!");
+  }
 }
 
 $(window).load(function() {
