@@ -4,13 +4,26 @@
   "name": "eye-mouse",
   "description": "Tracks a user's eye and maneuvers a virtual mouse pointer in the Chrome browser based on eye movement",
   "version": "0.0.1",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "jquery.min.js",
+        "build/jsfeat.js",
+        "build/compatibility.js",
+        "build/camgaze.js",
+        "cascades/eye.js",
+        "cascades/frontalface.js",
+        "mouse-sim.js",
+        "test_extension.js"
+      ]
+    }
+  ],
 
-  "permissions": [],
   "background": {
     "scripts": [
-      "jquery-2.1.0.min.js",
-      "camgaze.js/camgaze.eyetracker.js"
     ],
     "persistent": false
   }
 }
+
