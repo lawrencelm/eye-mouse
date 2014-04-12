@@ -5,5 +5,9 @@
   "description": "Tracks a user's eye and maneuvers a virtual mouse pointer in the Chrome browser based on eye movement",
   "version": "0.0.1",
 
-  "permissions": []
+  "permissions": [],
+  "background": {
+    "page": "background.html",
+    "persistent": false
+  }
 }
