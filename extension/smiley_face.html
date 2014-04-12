@@ -31,9 +31,18 @@
                 top: 0;
                 right: 0;
             }
+            #content {
+              height:50%;
+            }
             canvas, video{
               display:none;
-              visibility:hidden;
+              //visibility:hidden;
+            }
+            a {
+              font-size:64pt;
+              width:200px;
+              height:50px;
+              background-color:#00f;
             }
     	</style>
     	<!-- Le Bootstrap styles -->
@@ -49,14 +58,18 @@
 
     <body screen_capture_injected="true">
     <div id="eye-mouse-cursor"></div>
-    <div class="container-narrow">
-      <div class="hero-unit">
         <div align="center">
-          <canvas id="eye-mouse-video"></canvas>
-          <video style="display: none;" autoplay></video>
+          <div class="container">
+            <div id="content"> 
+              <a name="zero"></a>
+              <a href="#one"> CLICK ME IF YOU CAN </a>
+            </div>
+            <canvas id="eye-mouse-video"></canvas>
+            <video style="display: none; " autoplay></video>
+            <a name="one"></a>
+            <a href="#zero"> AND ME TOO!!!! </a>
+          </div>
         </div>
-      </div>
-    </div>
 
 		<!-- JQuery and Bootstrap Javascript files -->
 		<script src="jquery.min.js" ></script>

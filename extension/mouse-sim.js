@@ -11,7 +11,7 @@ var x = prevx;
 var y = prevy;
 var simx = x;
 var simy = y;
-var amp = 50;
+var amp = 25;
 
 var running_xavg = new Array();
 var running_yavg = new Array();
@@ -65,20 +65,11 @@ function move_from_centroid(c) {
 
 function wink(side) {
   document.getElementById("eye-mouse-cursor").style.backgroundColor = "#00f";
-  if (side == "left") {
-    //console.log ("WINK LEFT!");
-  } else {
-    //console.log("WINK RIGHT!");
-  }
+  var e = document.elementFromPoint(simx, simy);
+  if (e != null && e.tagName == "A" && e.hasAttribute("HREF")) window.location.replace(e.getAttribute("HREF"));
 }
 
 $(window).load(function() {
   update_cursor(simx, simy);
-  $(window).click(function() {
-    var e = document.elementFromPoint(simx, simy);
-    if (e.tagName =="A" && e.hasAttribute("HREF")) {
-      window.location.replace(e.getAttribute("HREF"));
-    }
-  });
 });
 
