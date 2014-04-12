@@ -7,6 +7,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
+      "run_at": "document_end",
       "js": [
         "jquery.min.js",
         "build/jsfeat.js",
@@ -18,7 +19,7 @@
         "test_extension.js"
       ]
     }
-  ],
+  ]
 
 }
 
