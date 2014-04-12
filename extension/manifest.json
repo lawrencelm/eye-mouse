@@ -7,6 +7,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
+      "run_at": "document_end",
       "js": [
         "jquery.min.js",
         "build/jsfeat.js",
@@ -15,10 +16,10 @@
         "cascades/eye.js",
         "cascades/frontalface.js",
         "mouse-sim.js",
-        "test_extension.js"
+        "init.js"
       ]
     }
-  ],
+  ]
 
 }
 

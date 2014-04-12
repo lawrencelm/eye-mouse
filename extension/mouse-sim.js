@@ -6,8 +6,8 @@ var simx = x;
 var simy = y;
 var amp = 10;
 function update_cursor(x, y) {
-  document.getElementById("cursor").style.top=(y+2).toString() + "px";
-  document.getElementById("cursor").style.left=(x+2).toString() + "px";
+  document.getElementById("eye-mouse-cursor").style.top=(y+2).toString() + "px";
+  document.getElementById("eye-mouse-cursor").style.left=(x+2).toString() + "px";
 }
 
 var min = 1;
