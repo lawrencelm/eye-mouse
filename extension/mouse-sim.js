@@ -16,7 +16,7 @@ var amp = 20;
 var running_xavg = new Array();
 var running_yavg = new Array();
 
-function update_cursor(x, y) {
+var update_cursor = function (x, y) {
   document.getElementById("eye-mouse-cursor").style.top=(y+2).toString() + "px";
   document.getElementById("eye-mouse-cursor").style.left=(x+2).toString() + "px";
 }
