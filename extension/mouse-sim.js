@@ -4,15 +4,26 @@ var x = prevx;
 var y = prevy;
 var simx = x;
 var simy = y;
-var amp = 1;
+var amp = 10;
 function update_cursor(x, y) {
   document.getElementById("cursor").style.top=(y+2).toString() + "px";
   document.getElementById("cursor").style.left=(x+2).toString() + "px";
 }
 
-var min = 5;
-var xmax = $(window).width()-5;
-var ymax = $(window).height()-5;
+var min = 1;
+var xmax = $(window).width()-1;
+var ymax = $(window).height()-1;
+var gaze_center =  new camgaze.structures.Point(xmax/2, ymax/2);
+
+function set_gaze_center (new_center) {
+  x = new_center.getX() + 100;
+  y = new_center.getY() + 100;
+  prevx = x; 
+  prevy = y;
+  simx = x;
+  simy = y;
+}
+
 function bounds_check() {
   if (simx < min) simx = min;
   if (simy < min) simy = min;
@@ -20,20 +31,12 @@ function bounds_check() {
   if (simy >= $(window).width()) simy = $(window).width()-1 - min;
 }
 
-function move_from_gazevec(vec) {
-  prevx = simx; prevy = simy;
-  simx -= vec.getX()/amp;
-  simy += vec.getY()/amp;
-  bounds_check();
-  update_cursor(simx, simy);
-}
-
 function move_from_centroid(c) {
   prevx = x; prevy = y;
   x = c.getX();
   y = c.getY();
-  simx += (x - prevx) * amp;
-  simy += (y - prevy) * amp;
+  simx -= (c.getX() - prevx) * amp;
+  simy += (c.getY() - prevy) * amp;
   bounds_check();
   update_cursor(simx, simy);
 }
