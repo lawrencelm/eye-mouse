@@ -111,7 +111,9 @@ var frameOp = function (image_data, video) {
       rwink_counter++; lwink_counter = 0;
       if (rwink_counter == wink_threshold) wink("right");
     }
+
   }
+  return image_data;
 
 };
 cGaze.setFrameOperator(frameOp);
