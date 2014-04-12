@@ -1,0 +1,9 @@
+{
+  "manifest_version": 2,
+
+  "name": "eye-mouse",
+  "description": "Tracks a user's eye and maneuvers a virtual mouse pointer in the Chrome browser based on eye movement",
+  "version": "0.0.1",
+
+  "permissions": []
+}
