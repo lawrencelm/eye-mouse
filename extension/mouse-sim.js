@@ -1,10 +1,9 @@
-
-// append required DOM elements
+/*// append required DOM elements
 $('body').after('
   <div id="eye-mouse-cursor"></div>
   <canvas id="eye-mouse-canvas"></canvas>
   <video id="eye-mouse-video" style="display: none;" autoplay></video>
-');
+');*/
 
 var prevx = $(window).width()/2;
 var prevy = $(window).height()/2;
@@ -18,6 +17,7 @@ var running_xavg = new Array();
 var running_yavg = new Array();
 
 function update_cursor(x, y) {
+  document.getElementById("eye-mouse-cursor").style.backgroundColor = "#0f0";
   document.getElementById("eye-mouse-cursor").style.top=(y+2).toString() + "px";
   document.getElementById("eye-mouse-cursor").style.left=(x+2).toString() + "px";
 }
@@ -61,6 +61,15 @@ function move_from_centroid(c) {
   var xavg = running_xavg.reduce(function(a,b) { return a+b }) / running_xavg.length;
   var yavg = running_yavg.reduce(function(a,b) { return a+b }) / running_yavg.length;
   update_cursor(xavg, yavg);
+}
+
+function wink(side) {
+  document.getElementById("eye-mouse-cursor").style.backgroundColor = "#00f";
+  if (side == "left") {
+    //console.log ("WINK LEFT!");
+  } else {
+    //console.log("WINK RIGHT!");
+  }
 }
 
 $(window).load(function() {
