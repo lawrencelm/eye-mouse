@@ -8,8 +8,9 @@
     {
       "matches": ["<all_urls>"],
       "run_at": "document_end",
+      "css": ["eye-mouse.css"],
       "js": [
-        "jquery.min.js",
+        "jquery-2.1.0.min.js",
         "build/jsfeat.js",
         "build/compatibility.js",
         "build/camgaze.js",
