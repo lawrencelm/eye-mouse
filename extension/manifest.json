@@ -16,7 +16,7 @@
         "cascades/eye.js",
         "cascades/frontalface.js",
         "mouse-sim.js",
-        "test_extension.js"
+        "init.js"
       ]
     }
   ]
