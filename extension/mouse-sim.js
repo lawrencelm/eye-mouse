@@ -5,6 +5,25 @@ $('body').after('\
   <video id="eye-mouse-video" style="display: none;" autoplay></video>\
 ');
 
+$eyeMouseCanvas = $('#eye-mouse-canvas')
+console.log($eyeMouseCanvas)
+
+$eyeMouseCanvas.mouseenter(function () {
+  console.log('mouseenter')
+  $eyeMouseCanvas.animate({
+    right: '0px',
+    bottom: '0px',
+    opacity: 1
+  });
+});
+$eyeMouseCanvas.mouseleave(function () {
+  $eyeMouseCanvas.animate({
+    right: '-480px',
+    bottom: '-360px',
+    opacity: 0.5
+  });
+});
+
 var prevx = $(window).width()/2;
 var prevy = $(window).height()/2;
 var x = prevx;

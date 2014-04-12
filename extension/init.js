@@ -2,10 +2,11 @@ var height = 480;
 var width = 640;
 var drawPt;
 var cGaze = new camgaze.Camgaze(
-  width, 
-  height, 
+  width,
+  height,
   "eye-mouse-canvas"
 );
+
 var eyeTracker = new camgaze.EyeTracker(width, height);
 var eyeFilter = new camgaze.EyeFilter();
 var drawer = new camgaze.drawing.ImageDrawer();
