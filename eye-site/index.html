@@ -13,12 +13,14 @@
 		<script src="js/jquery.dropotron.min.js"></script>
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
-		<script src="js/init.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/custom.js"></script>
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
 			<link rel="stylesheet" href="css/style-noscript.css" />
 		</noscript>
+    <link rel="stylesheet" href="css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
 	</head>
@@ -143,6 +145,8 @@
 					</section>
 					
 				<!-- Three -->
+
+				<!-- Might add bigger size pic with dark background when you click on pic-->
 					<section class="wrapper style3 container special">
 					
 						<header class="major">
@@ -153,7 +157,7 @@
 							<div class="6u">
 							
 								<section>
-									<a href="#" class="image feature"><img src="images/pic01.JPG" alt="" /></a>
+									<a href="#" class="image feature"><img src="images/pic01.jpg" alt="" /></a>
 									<header>
 										<h3>Evan Spiegel, CEO and Founder of Snapchat</h3>
 									</header>
@@ -177,7 +181,7 @@
 							<div class="6u">
 							
 								<section>
-									<a href="#" class="image feature"><img src="images/pic03.JPG" alt="" /></a>
+									<a href="#" class="image feature"><img src="images/pic03.jpg" alt="" /></a>
 									<header>
 										<h3>Developing our prototype</h3>
 									</header>
@@ -188,7 +192,7 @@
 							<div class="6u">
 							
 								<section>
-									<a href="#" class="image feature"><img src="images/pic04.JPG" alt="" /></a>
+									<a href="#" class="image feature"><img src="images/pic04.jpg" alt="" /></a>
 									<header>
 										<h3>Developers, Developers, Developers</h3>
 									</header>
@@ -218,16 +222,16 @@
 				<footer>
 					<ul class="buttons">
 						<li><a href="#" class="button special">Take My Money <!--link for donation page--></a></li>
-						<li><a href="#" class="button">Try it <!--link --></a></li>
-						<li><a href="#" class="button">Sign up <!-- add mailing list?--></a></li>
+						<li><a href="#" class="button">Try it <!--link!!! --></a></li>
+						<li><a href="#" class="button">Sign up <!-- add mailing list??--></a></li>
+						<li><a href="https://www.youtube.com/watch?v=hXSS4D3K-G8&feature=youtu.be" target='blank' class="button" id="video-link"> Prototype Video</a></li>
 					</ul>
 				</footer>
 			
 			</section>
-
 		<!-- Footer -->
 			<footer id="footer">
-			
+
 				<ul class="icons">
 					<!-- links? -->
 					<li><a href="#" class="icon circle fa-twitter"><span class="label">Twitter</span></a></li>
@@ -236,10 +240,49 @@
 					<li><a href="#" class="icon circle fa-github"><span class="label">Github</span></a></li>
 					<li><a href="#" class="icon circle fa-dribbble"><span class="label">Dribbble</span></a></li>
 				</ul>
+
+        <ul class="buttons osk">
+          <ul class="osk-row" id="osk-row-1">
+            <li class="osk-key"><a class="button">q</a></li>
+            <li class="osk-key"><a class="button">w</a></li>
+            <li class="osk-key"><a class="button">e</a></li>
+            <li class="osk-key"><a class="button">r</a></li>
+            <li class="osk-key"><a class="button">t</a></li>
+            <li class="osk-key"><a class="button">y</a></li>
+            <li class="osk-key"><a class="button">u</a></li>
+            <li class="osk-key"><a class="button">i</a></li>
+            <li class="osk-key"><a class="button">o</a></li>
+            <li class="osk-key"><a class="button">p</a></li>
+          </ul>
+          <ul class="osk-row" id="osk-row-2">
+            <li class="osk-key"><a class="button">a</a></li>
+            <li class="osk-key"><a class="button">s</a></li>
+            <li class="osk-key"><a class="button">d</a></li>
+            <li class="osk-key"><a class="button">f</a></li>
+            <li class="osk-key"><a class="button">g</a></li>
+            <li class="osk-key"><a class="button">h</a></li>
+            <li class="osk-key"><a class="button">j</a></li>
+            <li class="osk-key"><a class="button">k</a></li>
+            <li class="osk-key"><a class="button">l</a></li>
+          </ul>
+          <ul class="osk-row" id="osk-row-3">
+            <li class="osk-key"><a class="button">z</a></li>
+            <li class="osk-key"><a class="button">x</a></li>
+            <li class="osk-key"><a class="button">c</a></li>
+            <li class="osk-key"><a class="button">v</a></li>
+            <li class="osk-key"><a class="button">b</a></li>
+            <li class="osk-key"><a class="button">n</a></li>
+            <li class="osk-key"><a class="button">m</a></li>
+          </ul>
+        </ul>
 				
 				<span class="copyright">&copy; Eye.ly . All rights reserved. Developed by Sydney Li, Lawrence Lin Murata and Johannes Choo</span>
 			
 			</footer>
 
+      <div id="overlay-div" class="hide"></div>
+      <div id="overlay-video" class="hide">
+        <iframe width="640" height="360" src="http://www.youtube.com/embed/hXSS4D3K-G8" frameborder="0" allowfullscreen></iframe>
+      </div>
 	</body>
 </html>
