@@ -15,15 +15,15 @@ One of the several applications it can have is to allow people with disabilities
 
 An eye mouse that allows people to use their computers just by moving their eyes. Our chrome extension uses the webcam to accurately track your eye's movements and use them to move the mouse cursor. It is simple to use, easy, cross-platform, convenient and revolutionary.
 
-  - Simple:
+    - Simple:
   
   You can esily download it and start using it in a few seconds. You don't need to buy a new device to use it because it can access any type of webcam in your laptop or computer. It is also cross-platform and extremely compatible.
 
-  - Accurate:
+    - Accurate:
   
   We've developed technology that allows the webcam to accurately detect and track the eye's movements. We've tested it in several different types of eyes, movements and special edge cases to make sure it has an optimal performance and is the best product in the market.
 
-  - Revolutionary:
+    - Revolutionary:
   
   There are several applications for our technology. Ultimately, we want to change the way humans interact with computers, help people with disabilities use computers in a more convenient way and develop meaningful technology that can change people's lives.
 
