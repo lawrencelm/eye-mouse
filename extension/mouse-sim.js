@@ -41,7 +41,7 @@ var running_xavg = new Array();
 var running_yavg = new Array();
 
 function update_cursor(x, y) {
-  document.getElementById("eye-mouse-cursor").style.backgroundColor = "#0f0";
+  document.getElementById("eye-mouse-cursor").style.backgroundImage = "url("+chrome.extension.getURL("cursor_images/standard.gif") + ")";
   document.getElementById("eye-mouse-cursor").style.top=(y+2).toString() + "px";
   document.getElementById("eye-mouse-cursor").style.left=(x+2).toString() + "px";
 }
@@ -88,8 +88,10 @@ function move_from_centroid(c) {
 }
 
 function wink(side) {
-  document.getElementById("eye-mouse-cursor").style.backgroundColor = "#00f";
+  $("eye-mouse-cursor").css("backgroundImage" , "url(" + chrome.extension.getURL("cursor_images/click.png") + ")");
   var e = document.elementFromPoint(simx, simy);
+  //if (typeof e.onclick == "function")
+    //e.onclick.apply(e);
   if (e != null && e.tagName == "A" && e.hasAttribute("HREF")) window.location.replace(e.getAttribute("HREF"));
 }
 

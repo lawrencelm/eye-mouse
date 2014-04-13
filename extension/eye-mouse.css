@@ -1,17 +1,15 @@
 #eye-mouse-cursor {
-  height:5px;
-  width:5px;
-  position:fixed;
-  background-color:#0f0;
-  left:500px;
-  z-index:1000;
+height:19px;
+width:11px;
+position:fixed;
+left:500px;
+     z-index:1000;
 }
-
 #eye-mouse-canvas {
-  position: fixed;
-  right: -480px;
-  bottom: -360px;
-  opacity: 0.5;
-  cursor: pointer;
+position: fixed;
+right: -480px;
+bottom: -360px;
+opacity: 0.5;
+cursor: pointer;
 }
 

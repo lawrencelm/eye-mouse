@@ -14,7 +14,9 @@ var drawer = new camgaze.drawing.ImageDrawer();
 //var mappedMovingAverage = new camgaze.structures.MovingAveragePoints( new camgaze.structures.Point(0,0), 10);
 var runningAvg = new Array();
 var lftAvg = new Array();
+var lft;
 var rtAvg = new Array();
+var rt;
 var lwink_counter = 0;
 var rwink_counter = 0;
 var wink_threshold = 10;
@@ -93,18 +95,18 @@ var frameOp = function (image_data, video) {
       rtAvg.shift();
 
       var eyeCenter = average(runningAvg);
-      //image_data = drawer.drawCircle(image_data, eyeCenter, 5, -1, "green");
-      //image_data = drawer.drawCircle(image_data, average(lftAvg), 5, -1, "red");
-      //image_data = drawer.drawCircle(image_data, average(rtAvg), 5, -1, "red");
+      lft = average(lftAvg);
+      rt = average(rtAvg);
+      image_data = drawer.drawCircle(image_data, eyeCenter, 5, -1, "green");
+      image_data = drawer.drawCircle(image_data, lft, 5, -1, "red");
+      image_data = drawer.drawCircle(image_data, rt, 5, -1, "red");
       if (isCalibrated())
         move_from_centroid(eyeCenter);
     }
   } else if (trackingData.eyeList.length == 1 && gazeList[0] != undefined) {
     //console.log("WINK!");
     var winkEye = gazeList[0].centroid.unfiltered;
-    var lft_eye = average(lftAvg);
-    var rt_eye = average(rtAvg);
-    if (winkEye.distTo(lft_eye) < winkEye.distTo(rt_eye)) {
+    if (winkEye.distTo(lft) < winkEye.distTo(rt)) {
       lwink_counter++; rwink_counter = 0;
       if (lwink_counter == wink_threshold) wink("left");
     } else {

@@ -20,7 +20,11 @@
         "init.js"
       ]
     }
-  ]
+  ],
+  "web_accessible_resources": [
+    "cursor_images/standard.gif",
+    "cursor_images/click.png"
+    ]
 
 }
 
