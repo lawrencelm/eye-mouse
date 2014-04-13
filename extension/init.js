@@ -102,7 +102,7 @@ var frameOp = function (image_data, video) {
       if (isCalibrated())
         move_from_centroid(eyeCenter);
     }
-  } else if (trackingData.eyeList.length == 1 && gazeList[0] != undefined) {
+  } else if (!calibrating && trackingData.eyeList.length == 1 && gazeList[0] != undefined) {
     var winkEye = gazeList[0].centroid.unfiltered;
     if (winkEye.distTo(lft) < winkEye.distTo(rt)) {
       lwink_counter++; rwink_counter = 0;
