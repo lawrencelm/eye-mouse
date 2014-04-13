@@ -35,7 +35,8 @@ var x = prevx;
 var y = prevy;
 var simx = x;
 var simy = y;
-var amp = 30;
+var ampy = 30;
+var ampx = 50;
 
 var running_xavg = new Array();
 var running_yavg = new Array();
@@ -89,7 +90,7 @@ function set_gaze_center (new_center) {
   prevy = y;
   simx = x;
   simy = y;
-  for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 6; i++) {
     running_xavg.push(x);
     running_yavg.push(y);
   }
@@ -106,8 +107,8 @@ function move_from_centroid(c) {
   prevx = x; prevy = y;
   x = c.getX();
   y = c.getY();
-  simx -= (x - prevx) * amp;
-  simy += (y - prevy) * amp;
+  simx -= (x - prevx) * ampx;
+  simy += (y - prevy) * ampy;
   bounds_check();
   running_xavg.push(simx);
   running_xavg.shift();
