@@ -35,8 +35,8 @@ var x = prevx;
 var y = prevy;
 var simx = x;
 var simy = y;
-var ampy = 30;
-var ampx = 50;
+var ampy = 25;
+var ampx = 35;
 
 var running_xavg = new Array();
 var running_yavg = new Array();
@@ -118,7 +118,7 @@ function move_from_centroid(c) {
   var yavg = running_yavg.reduce(function(a,b) { return a+b }) / running_yavg.length;
   update_cursor(xavg, yavg);
 }
-
+ var output_id = "#keyboard_output";
   function wink(side) {
     //console.log(simx, simy);
     var e = document.elementFromPoint(simx, simy);
@@ -130,6 +130,12 @@ function move_from_centroid(c) {
       clicked = true;
       window.location.replace(e.getAttribute("HREF"));
       $("#eye-mouse-cursor").css("background-color","#00f");
+    }
+    if (e != null && $(e).hasClass("osk-key")) {
+      $("#eye-mouse-cursor").css("background-color","#00f");
+      var txt = $(output_id).text() + $(e).text();
+      console.log(txt);
+      $(output_id).text(txt);
     }
   }
 $(window).load(function() {

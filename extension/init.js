@@ -19,7 +19,7 @@ var rtAvg = new Array();
 var rt;
 var lwink_counter = 0;
 var rwink_counter = 0;
-var wink_threshold = 10;
+var wink_threshold = 16;
 for (var i = 0; i < 8; i++){
   runningAvg.push(new camgaze.structures.Point(-1,-1));
  lftAvg.push(new camgaze.structures.Point(-1,-1));
@@ -98,9 +98,9 @@ var frameOp = function (image_data, video) {
       lft = average(lftAvg);
       rt = average(rtAvg);
       // FOR DEBUGGING PURPOSES
-      image_data = drawer.drawCircle(image_data, eyeCenter, 5, -1, "green");
-      image_data = drawer.drawCircle(image_data, lft, 5, -1, "red");
-      image_data = drawer.drawCircle(image_data, rt, 5, -1, "red");
+      image_data = drawer.drawCircle(image_data, eyeCenter, 3, -1, "red");
+      image_data = drawer.drawCircle(image_data, lft, 3, -1, "blue");
+      image_data = drawer.drawCircle(image_data, rt, 3, -1, "blue");
       if (isCalibrated())
         move_from_centroid(eyeCenter);
     }
