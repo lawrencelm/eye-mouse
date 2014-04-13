@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <!-- <link rel="stylesheet" href="bootstrap.min.css" /> -->
+  <script src="jquery.min.js"></script>
+  <script> keyboard = true; amp= 15;  </script>
+  <style> 
+    .container {
+      margin:auto;
+      height:630;
+      width:750px;
+      overflow:hidden;
+      border:solid 1px #000;
+    }
+    tr, td {
+      border:0px; padding:0;
+    }
+    tr {
+      height:80px;
+    }
+    td {
+      border:solid 3px #fff;
+      width:100px;
+      background-color:#ddf;
+    }
+
+.highlight {
+  background-color:#bbf;
+}
+.active {
+  background-color:#99f;
+}
+
+#input {
+  width:100%;
+  height:50px;
+  font-size:24pt;
+}
+  </style>
+  <script> 
+    var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    $(window).load( function() {
+      $(".cell").each(function(i, cell) {
+        $(cell).text(letters[i]);
+        $(cell).attr("id", letters[i]);
+      });
+    });
+  </script>
+</head>
+<body>
+<div class="container">
+  <div id="input"></div>
+  <table>
+    <tr class="row r1">
+      <td class="cell c1"></td>
+      <td class="cell c2"></td>
+      <td class="cell c3"></td>
+      <td class="cell c4"></td>
+      <td class="cell c5"></td>
+      <td class="cell c6"></td>
+      <td rowspan="3" id="space" class="special">SPACE</td>
+    </tr>
+    <tr class="row r2">
+      <td class="cell c1"></td>
+      <td class="cell c2"></td>
+      <td class="cell c3"></td>
+      <td class="cell c4"></td>
+      <td class="cell c5"></td>
+      <td class="cell c6"></td>
+    </tr>
+    <tr class="row r3">
+      <td class="cell c1"></td>
+      <td class="cell c2"></td>
+      <td class="cell c3"></td>
+      <td class="cell c4"></td>
+      <td class="cell c5"></td>
+      <td class="cell c6"></td>
+    </tr>
+    <tr class="row r4">
+      <td class="cell c1"></td>
+      <td class="cell c2"></td>
+      <td class="cell c3"></td>
+      <td class="cell c4"></td>
+      <td class="cell c5"></td>
+      <td class="cell c6"></td>
+      <td rowspan="3" id="enter" class="special">ENTER</td>
+    </tr>
+    <tr class="row r5">
+      <td class="cell c1"></td>
+      <td class="cell c2"></td>
+      <td class="cell c3"></td>
+      <td class="cell c4"></td>
+      <td class="cell c5"></td>
+      <td class="cell c6"></td>
+    </tr>
+    <tr class="row r6">
+      <td class="cell c1"></td>
+      <td class="cell c2"></td>
+      <td class="cell c3"></td>
+      <td class="cell c4"></td>
+      <td class="cell c5"></td>
+      <td class="cell c6"></td>
+    </tr>
+
+  </table>
+  </div>
+
+  <script src="jquery.min.js"></script>
+  <script src="bootstrap.min.js"></script>
+</body>
+</htmlcell >
