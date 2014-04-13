@@ -1,6 +1,8 @@
 #eye-mouse-cursor {
-height:19px;
-width:11px;
+  height:10px;
+  width:10px;
+  border-radius:50%;
+  background-color:"#0f0";
 position:fixed;
 left:500px;
      z-index:1000;

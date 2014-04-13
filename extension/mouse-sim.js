@@ -2,7 +2,7 @@
 $('body').after('\
   <div id="eye-mouse-cursor"></div>\
   <canvas id="eye-mouse-canvas"></canvas>\
-  <video id="eye-mouse-video" style="display: none;" autoplay></video>\
+  <video id="eye-mouse-video" style="display: none; visibility:hidden" autoplay></video>\
 ');
 
 $eyeMouseCanvas = $('#eye-mouse-canvas')
@@ -41,7 +41,7 @@ var running_xavg = new Array();
 var running_yavg = new Array();
 
 function update_cursor(x, y) {
-  document.getElementById("eye-mouse-cursor").style.backgroundImage = "url("+chrome.extension.getURL("cursor_images/standard.gif") + ")";
+  document.getElementById("eye-mouse-cursor").style.backgroundColor = "#0f0";// = "url("+chrome.extension.getURL("cursor_images/standard.gif") + ")";
   document.getElementById("eye-mouse-cursor").style.top=(y+2).toString() + "px";
   document.getElementById("eye-mouse-cursor").style.left=(x+2).toString() + "px";
 }
@@ -88,10 +88,11 @@ function move_from_centroid(c) {
 }
 
 function wink(side) {
-  $("eye-mouse-cursor").css("backgroundImage" , "url(" + chrome.extension.getURL("cursor_images/click.png") + ")");
+  $("#eye-mouse-cursor").css("backgroundColor" , "#f00");
   var e = document.elementFromPoint(simx, simy);
-  //if (typeof e.onclick == "function")
-    //e.onclick.apply(e);
+  if (typeof e.onclick == "function")
+    e.onclick.apply(e);
+  e.mousedown();
   if (e != null && e.tagName == "A" && e.hasAttribute("HREF")) window.location.replace(e.getAttribute("HREF"));
 }
 

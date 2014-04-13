@@ -70,11 +70,9 @@ var frameOp = function (image_data, video) {
   var lookingPt;
   var trackingData = eyeTracker.track(image_data, video);
   var gazeList = eyeFilter.getFilteredGaze(trackingData);
-
   if (trackingData.eyeList.length == 2 && gazeList[0] != undefined && gazeList[1] != undefined) {
     lwink_counter = 0;
     rwink_counter = 0;
-    //image_data = drawer.drawCircle(drawPt, 10, -1, "green");
     gazeList = eyeFilter.getFilteredGaze(trackingData);
     var lft_eye = gazeList[0].centroid.unfiltered;
     var rt_eye = gazeList[1].centroid.unfiltered;
@@ -97,14 +95,14 @@ var frameOp = function (image_data, video) {
       var eyeCenter = average(runningAvg);
       lft = average(lftAvg);
       rt = average(rtAvg);
-      image_data = drawer.drawCircle(image_data, eyeCenter, 5, -1, "green");
+      // FOR DEBUGGING PURPOSES
+      /*image_data = drawer.drawCircle(image_data, eyeCenter, 5, -1, "green");
       image_data = drawer.drawCircle(image_data, lft, 5, -1, "red");
-      image_data = drawer.drawCircle(image_data, rt, 5, -1, "red");
+      image_data = drawer.drawCircle(image_data, rt, 5, -1, "red");*/
       if (isCalibrated())
         move_from_centroid(eyeCenter);
     }
   } else if (trackingData.eyeList.length == 1 && gazeList[0] != undefined) {
-    //console.log("WINK!");
     var winkEye = gazeList[0].centroid.unfiltered;
     if (winkEye.distTo(lft) < winkEye.distTo(rt)) {
       lwink_counter++; rwink_counter = 0;
@@ -116,6 +114,5 @@ var frameOp = function (image_data, video) {
 
   }
   return image_data;
-
 };
 cGaze.setFrameOperator(frameOp);
