@@ -35,7 +35,8 @@ var x = prevx;
 var y = prevy;
 var simx = x;
 var simy = y;
-var amp = 30;
+var ampy = 25;
+var ampx = 35;
 
 var running_xavg = new Array();
 var running_yavg = new Array();
@@ -89,7 +90,7 @@ function set_gaze_center (new_center) {
   prevy = y;
   simx = x;
   simy = y;
-  for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 6; i++) {
     running_xavg.push(x);
     running_yavg.push(y);
   }
@@ -106,8 +107,8 @@ function move_from_centroid(c) {
   prevx = x; prevy = y;
   x = c.getX();
   y = c.getY();
-  simx -= (x - prevx) * amp;
-  simy += (y - prevy) * amp;
+  simx -= (x - prevx) * ampx;
+  simy += (y - prevy) * ampy;
   bounds_check();
   running_xavg.push(simx);
   running_xavg.shift();
@@ -117,7 +118,7 @@ function move_from_centroid(c) {
   var yavg = running_yavg.reduce(function(a,b) { return a+b }) / running_yavg.length;
   update_cursor(xavg, yavg);
 }
-
+ var output_id = "#keyboard_output";
   function wink(side) {
     //console.log(simx, simy);
     var e = document.elementFromPoint(simx, simy);
@@ -129,6 +130,12 @@ function move_from_centroid(c) {
       clicked = true;
       window.location.replace(e.getAttribute("HREF"));
       $("#eye-mouse-cursor").css("background-color","#00f");
+    }
+    if (e != null && $(e).hasClass("osk-key")) {
+      $("#eye-mouse-cursor").css("background-color","#00f");
+      var txt = $(output_id).text() + $(e).text();
+      console.log(txt);
+      $(output_id).text(txt);
     }
   }
 $(window).load(function() {
