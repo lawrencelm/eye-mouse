@@ -20,9 +20,11 @@ var rt;
 var lwink_counter = 0;
 var rwink_counter = 0;
 var wink_threshold = 10;
-for (var i = 0; i < 5; i++) runningAvg.push(new camgaze.structures.Point(-1,-1));
-for (var i = 0; i < 5; i++) lftAvg.push(new camgaze.structures.Point(-1,-1));
-for (var i = 0; i < 5; i++) rtAvg.push(new camgaze.structures.Point(-1,-1));
+for (var i = 0; i < 8; i++){
+  runningAvg.push(new camgaze.structures.Point(-1,-1));
+ lftAvg.push(new camgaze.structures.Point(-1,-1));
+ rtAvg.push(new camgaze.structures.Point(-1,-1));
+}
 
 function average(pts) {
   xsum = 0; ysum = 0;
@@ -89,7 +91,7 @@ var frameOp = function (image_data, video) {
       lftAvg.push(lft_eye);
       lftAvg.shift();
 
-      rtAvg.push(rt_eye);
+     rtAvg.push(rt_eye);
       rtAvg.shift();
 
       var eyeCenter = average(runningAvg);
@@ -102,7 +104,7 @@ var frameOp = function (image_data, video) {
       if (isCalibrated())
         move_from_centroid(eyeCenter);
     }
-  } else if (trackingData.eyeList.length == 1 && gazeList[0] != undefined) {
+  } else if (!calibrating && trackingData.eyeList.length == 1 && gazeList[0] != undefined) {
     var winkEye = gazeList[0].centroid.unfiltered;
     if (winkEye.distTo(lft) < winkEye.distTo(rt)) {
       lwink_counter++; rwink_counter = 0;
@@ -111,7 +113,8 @@ var frameOp = function (image_data, video) {
       rwink_counter++; lwink_counter = 0;
       if (rwink_counter == wink_threshold) wink("right");
     }
-
+  } else {
+    move_from_centroid(average(runningAvg));
   }
   return image_data;
 };

@@ -11,7 +11,6 @@
       "css": ["eye-mouse.css"],
       "js": [
         "jquery-2.1.0.min.js",
-        "jquery.nearest.min.js",
         "build/jsfeat.js",
         "build/compatibility.js",
         "build/camgaze.js",
