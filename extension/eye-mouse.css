@@ -7,6 +7,7 @@ position:fixed;
 left:500px;
      z-index:1000;
 }
+
 #eye-mouse-canvas {
 position: fixed;
 right: -480px;
@@ -15,3 +16,6 @@ opacity: 0.5;
 cursor: pointer;
 }
 
+.link_focus {
+  background-color:"#00f";
+}

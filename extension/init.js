@@ -96,9 +96,9 @@ var frameOp = function (image_data, video) {
       lft = average(lftAvg);
       rt = average(rtAvg);
       // FOR DEBUGGING PURPOSES
-      /*image_data = drawer.drawCircle(image_data, eyeCenter, 5, -1, "green");
+      image_data = drawer.drawCircle(image_data, eyeCenter, 5, -1, "green");
       image_data = drawer.drawCircle(image_data, lft, 5, -1, "red");
-      image_data = drawer.drawCircle(image_data, rt, 5, -1, "red");*/
+      image_data = drawer.drawCircle(image_data, rt, 5, -1, "red");
       if (isCalibrated())
         move_from_centroid(eyeCenter);
     }
