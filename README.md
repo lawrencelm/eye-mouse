@@ -5,7 +5,7 @@ by iMous: Innovating the way people interact wiht computers.  Developed by Sydne
 
 - Intro:
 
-An eye mouse that allows people to use their computers just by moving eyes. The computer's webcam identifies and tracks those movements, allowing the cursor to follow them. It works as a chrome extension. 
+Imagine hacking during an entire hackathon without even touching your computer. Well, with our chrome extension, you can do it. It's an eye mouse and keyboard that allows people to use their computers just by moving their eyes. Our chrome extension uses the webcam to accurately track your eye's movements and use them to move the mouse cursor and the keyboard. It is simple to use, easy, cross-platform, convenient and revolutionary. One of the several applications it can have is to allow people with disabilities to use computers easily.
 
 - Applications:
 
