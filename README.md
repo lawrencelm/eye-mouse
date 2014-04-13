@@ -1,7 +1,7 @@
 eye-mouse
 =========
 
-by iMous: Innovating the way people interact wiht computers.  Developed by Sydney Li, Lawrence Lin Murata and Johannes Choo.
+by iMous.org: Innovating the way people interact wiht computers.  Developed by Sydney Li, Lawrence Lin Murata and Johannes Choo.
 
 - Intro:
 
@@ -27,4 +27,4 @@ An eye mouse that allows people to use their computers just by moving their eyes
   
   There are several applications for our technology. Ultimately, we want to change the way humans interact with computers, help people with disabilities use computers in a more convenient way and develop meaningful technology that can change people's lives.
 
-- More information: feel free to contact us at lmurata@stanford.edu. You can find more information on our website iMous.org (once it's up) or on our page under "web design" folder.
+- More information: feel free to contact us at lmurata@stanford.edu. You can find more information on our website iMous.org.
