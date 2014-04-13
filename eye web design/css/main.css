@@ -1,0 +1,8 @@
+ul.buttons li.osk-key {
+  padding: 0 0 0 0.5em;
+}
+
+.osk-key a {
+  min-width: 4em;
+  padding: 0.75em;
+}
